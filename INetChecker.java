@@ -25,6 +25,10 @@ public class INetChecker implements Runnable {
 					
 					
 			case "--run" : { //tester.createConnections();
+						   System.out.println("Notice: Please disable any system wide proxy setting like tor or UltraSurf\n"+
+								"or the software may not work properly and\n" + 
+								"may take longer time to detect internet\n"+
+								"Checking you internet connection...");
 						   if(tester.checkTimed(1)) System.out.println("Your Internet is working! :D Enjoy!");
 						   break;
 			}
