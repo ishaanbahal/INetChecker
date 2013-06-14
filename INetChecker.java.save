@@ -25,10 +25,8 @@ public class INetChecker implements Runnable {
 					
 					
 			case "--run" : { //tester.createConnections();
-						   System.out.println("Notice: Please disable any system wide proxy setting like tor or UltraSurf\n"+
-								"or the software may not work properly and\n" + 
-								"may take longer time to detect internet\n"+
-								"Checking you internet connection...");
+						   System.out.println("Checking you internet connection...\n Please disable any 
+system proxy like Ultrasurf or tor or the software will not work properly and may take longer to detect internet connection");
 						   if(tester.checkTimed(1)) System.out.println("Your Internet is working! :D Enjoy!");
 						   break;
 			}
@@ -63,18 +61,8 @@ public class INetChecker implements Runnable {
 		return false;
 	}
 		
-	public void print(String a,int val){
+	public void print(String a){
 		// TODO Logging Function. Inherit and Override.Can be used to print anything actually.
-		switch(val){
-			case 1 : System.out.println(a);
-			break;
-			
-			case 2 : //fill with some logging function to GUI.
-			break;
-
-			default : System.out.println("Wrong Value");
-		}
-
 	}
 	
 	public boolean checkTimed(int a){
