@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 
 public class ChatGUI2 extends Menu {
 
-	JFrame MainFrame = new JFrame("Chat Client");
+	JFrame MainFrame = new JFrame("Internet Checker");
 	static int val = 0;
 	JPanel panel1 = new JPanel();
 
