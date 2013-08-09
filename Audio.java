@@ -7,7 +7,7 @@ public class Audio {
 	
 	public void playSound(){
 	try {
-		File file = new File("alarma.wav");
+		File file = new File("CHIMES.wav");
 		AudioInputStream audioIn = AudioSystem.getAudioInputStream(file);
 		Clip clip = AudioSystem.getClip();
 		clip.open(audioIn);

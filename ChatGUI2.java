@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,7 +17,7 @@ import javax.swing.JTextArea;
 
 public class ChatGUI2 extends Menu {
 
-	JFrame MainFrame = new JFrame("Internet Checker");
+	JFrame MainFrame = new JFrame("Chat Client");
 	static int val = 0;
 	JPanel panel1 = new JPanel();
 
@@ -24,11 +25,14 @@ public class ChatGUI2 extends Menu {
 	JButton checkTimed = new JButton("Continuous Check");
 	JTextArea log = new JTextArea("Software Initialised.\n"
 			+ "Please choose an option", 10, 20);
+	JCheckBox soundCheck = new JCheckBox("Sound");
 
 	public void go() {
+		
 		panel1.setBackground(Color.WHITE);
 		panel1.add(checkOnce);
 		panel1.add(checkTimed);
+		panel1.add(soundCheck);
 		log.setEditable(false);
 		log.setLineWrap(true);
 		MainFrame.setSize(400, 250);
@@ -106,9 +110,14 @@ public class ChatGUI2 extends Menu {
 		public void actionPerformed(ActionEvent arg0) {
 			INetChecker checker = new INetChecker();
 			if (checker.checkOnce()) {
-				if(log.getLineCount()>=8);
+
 				log.append("\nConnection Successful!\n"
 						+ "You can now enjoy your internet ");
+				if(soundCheck.isSelected()){
+					Audio audio = new Audio();
+					audio.playSound();
+				}
+				
 			} else {
 				log.append("\nSorry, Your internet is not working");
 			}
@@ -127,6 +136,10 @@ public class ChatGUI2 extends Menu {
 			if (checker.checkTimed(10)) {
 				log.append("\n\nConnection Successful!\n"
 						+ "You can now enjoy your internet ");
+				if(soundCheck.isSelected()){
+					Audio audio = new Audio();
+					audio.playSound();
+				}
 			}
 
 		}
@@ -155,3 +168,68 @@ abstract class Menu {
 	}
 
 }
+
+class EJFrame extends JFrame {
+
+	/**
+	 * @author ishaan
+	 */
+	private static final long serialVersionUID = 1L;
+
+	static int CLOSE_VALUE = 0;
+	public EJFrame(String string) {
+		// TODO Auto-generated constructor stub
+		super(string);
+	}
+	@Override
+	public void dispose() {
+			JDialog close = new JDialog();
+			JLabel label1 = new JLabel("About to exit, are you sure?");
+			JButton button1 = new JButton("Yes");
+			JButton button2 = new JButton("No");
+			close.setTitle("About to exit");
+			close.setSize(100, 100);
+			close.setResizable(false);
+			close.setAlwaysOnTop(true);
+			JDialog.setDefaultLookAndFeelDecorated(isUndecorated());
+			close.add(label1);
+			close.add(button1);
+			close.add(button2);
+			close.setVisible(true);
+			button2.isDefaultButton();
+			while(true){
+				if(CLOSE_VALUE==2){
+					super.dispose();
+					close.dispose();
+					break;
+				}
+				if(CLOSE_VALUE==3){
+					close.dispose();
+					break;
+				}
+		}
+			
+		
+
+	}
+
+	class yesListen implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			CLOSE_VALUE=2;
+		}
+		
+	}
+	class noListen implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			CLOSE_VALUE=3;
+		}
+		
+	}
+}
+
