@@ -1,0 +1,4 @@
+#!/bin/bash
+echo 'Running Internet Checker'
+
+java ~/workspace/INetChecker-Git/INetChecker --run
