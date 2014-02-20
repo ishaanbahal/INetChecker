@@ -35,8 +35,8 @@ public class INetChecker implements Runnable {
 					System.out.println("Your Internet is working! :D Enjoy!");
 					Audio audio = new Audio();
 					audio.playSound();
-				}
-				break;
+				break;}
+
 			}
 			case "--info": {
 				System.out
@@ -141,7 +141,6 @@ public class INetChecker implements Runnable {
 			try {
 				if (google.isClosed())
 					google.close();
-
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("IO Exception: " + e.getLocalizedMessage());
